@@ -1,4 +1,4 @@
-const pool = require('./backend/config/db');
+const pool = require('../backend/config/db');
 (async () => {
   try {
     const res = await pool.query('SELECT 1 AS ok');

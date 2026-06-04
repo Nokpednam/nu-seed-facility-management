@@ -1,4 +1,4 @@
-const dashboardService = require('./backend/services/dashboardService');
+const dashboardService = require('../backend/services/dashboardService');
 
 async function test() {
   try {

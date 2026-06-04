@@ -1,5 +1,5 @@
-const pool = require('./backend/config/db');
-const dashboardController = require('./backend/controllers/dashboardController');
+const pool = require('../backend/config/db');
+const dashboardController = require('../backend/controllers/dashboardController');
 
 // Mock pool.query to see what's happening
 /*

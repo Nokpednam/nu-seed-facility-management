@@ -448,8 +448,8 @@ class EmployeeService {
     const activeProjects  = projects.filter(p =>
       ['กำลังดำเนินการ', 'เปิดรับสมัคร'].includes(p.status)
     ).length;
-    const totalParticipants = projects.reduce((s, p) => s + p.participants, 0);
-    const totalPendingTasks = projects.reduce((s, p) => s + p.issues, 0);
+    const totalParticipants = projects.reduce((s, p) => s + parseInt(p.participants || 0, 10), 0);
+    const totalPendingTasks = projects.reduce((s, p) => s + parseInt(p.issues || 0, 10), 0);
 
     return {
       scoped: Boolean(employeeId),

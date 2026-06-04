@@ -1,4 +1,4 @@
-const feedbackService = require('./backend/services/feedbackService');
+const feedbackService = require('../backend/services/feedbackService');
 
 async function test() {
   try {

@@ -1,5 +1,5 @@
-const dashboardService = require('./backend/services/dashboardService');
-const feedbackService = require('./backend/services/feedbackService');
+const dashboardService = require('../backend/services/dashboardService');
+const feedbackService = require('../backend/services/feedbackService');
 
 async function runTest() {
   try {

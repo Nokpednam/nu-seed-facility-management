@@ -1,5 +1,5 @@
-const pool = require('./backend/config/db');
-const { createTask, updateTask, getTasks } = require('./backend/controllers/taskController');
+const pool = require('../backend/config/db');
+const { createTask, updateTask, getTasks } = require('../backend/controllers/taskController');
 
 // Mock req and res
 const mockRes = () => {
