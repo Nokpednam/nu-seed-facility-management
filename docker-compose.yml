@@ -1,0 +1,22 @@
+# PostgreSQL สำหรับรัน NU SEED แบบ local — ใช้คู่กับ start.sh / init-demo-db.js
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: nuseed-postgres
+    environment:
+      POSTGRES_USER: nuseed
+      POSTGRES_PASSWORD: nuseed
+      POSTGRES_DB: nuseed
+    # พอร์ตโฮสต์ 55432 — ลดโอกาสชนกับ Postgres อื่นที่ 5432/5433
+    ports:
+      - "55432:5432"
+    volumes:
+      - nuseed_pg_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U nuseed -d nuseed"]
+      interval: 3s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  nuseed_pg_data:
