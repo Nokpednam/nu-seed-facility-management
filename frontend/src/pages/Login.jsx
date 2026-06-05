@@ -81,6 +81,19 @@ const Login = () => {
     navigate(to, { replace: true });
   }, [sessionRole, navigate]);
 
+  useEffect(() => {
+    const defaultEmp = typeof import.meta !== 'undefined' && import.meta.env?.VITE_DEMO_EMPLOYEE_EMAIL
+      ? String(import.meta.env.VITE_DEMO_EMPLOYEE_EMAIL).trim()
+      : 'somchai@demo.nu.seed';
+    const defaultExec = 'exec@demo.nu.seed';
+    
+    setEmployeeEmail(prev => {
+      if (selectedRole === 'executive' && prev === defaultEmp) return defaultExec;
+      if (selectedRole === 'employee' && prev === defaultExec) return defaultEmp;
+      return prev;
+    });
+  }, [selectedRole]);
+
   const handleLogin = async (e) => {
     e.preventDefault();
     setError(null);
@@ -212,7 +225,7 @@ const Login = () => {
                   value={employeeEmail}
                   onChange={(e) => setEmployeeEmail(e.target.value)}
                   className="w-full rounded-xl border border-white/10 bg-[#0f172a]/80 px-3 py-2.5 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  placeholder="somchai@demo.nu.seed"
+                  placeholder={selectedRole === 'executive' ? 'exec@demo.nu.seed' : 'somchai@demo.nu.seed'}
                   autoComplete="email"
                 />
                 <p className="text-[11px] text-gray-500 leading-relaxed">
